@@ -15,7 +15,20 @@ from dataset import ReviewData
 from framework import Model
 import models
 import config
+import logging
+import sys
 
+class Logger(object):
+    def __init__(self, fileN="Default.log"):
+        self.terminal = sys.stdout
+        self.log = open(fileN, "a",encoding='utf-8')     #文件权限为'a'，追加模式
+
+    def write(self, message):
+        self.terminal.write(message)
+        self.log.write(message)
+
+    def flush(self):
+        pass
 
 def now():
     return str(time.strftime('%Y-%m-%d %H:%M:%S'))
@@ -27,7 +40,22 @@ def collate_fn(batch):
 
 
 def train(**kwargs):
-    logtime=now()
+    logging.basicConfig(filename='logger.log', format='%(asctime)s - %(levelname)s - %(message)s',level=logging.WARNING)
+    logger = logging.getLogger(__name__)   	#定义一次就可以，其他地方需要调用logger,只需要直接使用logger就行了
+    logger.setLevel(level=logging.INFO)  	#定义过滤级别
+    filehandler = logging.FileHandler("log.txt")  	# Handler用于将日志记录发送至合适的目的地，如文件、终端等
+    filehandler.setLevel(logging.INFO)
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    filehandler.setFormatter(formatter)
+
+    console = logging.StreamHandler()  		#日志信息显示在终端terminal
+    console.setLevel(logging.DEBUG)
+    console.setFormatter(formatter)
+
+    logger.addHandler(filehandler)
+    logger.addHandler(console)
+
+    logger.info("Start log")
     log_save_folder='dataset'
     if not os.path.exists(log_save_folder + '/log'):
         os.makedirs(log_save_folder + '/log')
@@ -81,7 +109,8 @@ def train(**kwargs):
     smooth_mae_func = nn.SmoothL1Loss()
     Train_rmse_log=[]
     Val_rmse_log=[]
-
+    message='_addtime_'+str(opt.addtime)+'_addcnn_'+str(opt.addcnn)+'_bestres_'+str(best_res)
+    logger.info('evaluate_time_'+opt.dataset+message)
     for epoch in range(opt.num_epochs):
         total_loss = 0.0
         total_maeloss = 0.0
@@ -162,6 +191,8 @@ def train(**kwargs):
         np.save(f"{log_save_folder}/log/{valfilename}", Val_rmse_log)
     print("----"*20)
     print(f"{now()} {opt.dataset} {opt.print_opt} best_rmse:  {best_res}")
+    message='_addtime_'+str(opt.addtime)+'_addtcnn_'+str(opt.addcnn)+'_bestres_'+str(best_res)
+    logger.info('evaluate_time_'+opt.dataset+message)
     print("----"*20)
 
 

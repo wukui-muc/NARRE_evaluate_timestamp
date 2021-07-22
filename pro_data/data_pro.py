@@ -261,10 +261,13 @@ if __name__ == '__main__':
 
     print(f"-"*60)
     print(f"{now()} Step2: split datsets into train/val/test, save into npy data")
+
     # data_time=data.sort_values(by="reviewTime" , ascending=True)
-    # train_index=int(0.8*data_time.shape[0])
+    # train_index=int(0.5*data_time.shape[0])
     # data_train= data_time.iloc[0:train_index,:]
     # data_test = data_time.iloc[train_index:,:]
+    # train_index=[]
+
 
     data_train, data_test = train_test_split(data, test_size=0.2, random_state=1234)
     uids_train, iids_train = get_count(data_train, 'user_id'), get_count(data_train, 'item_id')
@@ -286,16 +289,20 @@ if __name__ == '__main__':
             if iid not in iids_train:
                 iidMiss.append(iid)
     uid_index = []
+
+    ##下面这一部分的改动主要直接删除了test中对应train里未出现的ID
     for uid in uidMiss:
         index = data_test.index[data_test['user_id'] == uid].tolist()
         uid_index.extend(index)
-    data_train = pd.concat([data_train, data_test.loc[uid_index]])
+    data_train = pd.concat([data_train, data_test.loc[uid_index]])#将不在train中的user数据从test中粘贴到train里
 
     iid_index = []
     for iid in iidMiss:
         index = data_test.index[data_test['item_id'] == iid].tolist()
         iid_index.extend(index)
     data_train = pd.concat([data_train, data_test.loc[iid_index]])
+
+
 
     all_index = list(set().union(uid_index, iid_index))
     data_test = data_test.drop(all_index)
