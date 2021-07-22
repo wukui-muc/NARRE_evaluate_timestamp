@@ -136,7 +136,7 @@ class Toys_and_Games_data_Config(DefaultConfig):
 
     vocab_size = 50002
     word_dim = 300
-    timestamp_size=169+1
+    timestamp_size=
     r_max_len = 113
 
     u_max_r = 9
@@ -160,7 +160,7 @@ class Office_Products_data_Config(DefaultConfig):
 
     vocab_size = 47808
     word_dim = 300
-    timestamp_size=147+1
+    timestamp_size=
     r_max_len = 134
 
     u_max_r = 14
@@ -184,7 +184,7 @@ class Baby_data_Config(DefaultConfig):
 
     vocab_size = 50002
     word_dim = 300
-    timestamp_size=158+1
+    timestamp_size=
     r_max_len = 94
 
     u_max_r = 9
