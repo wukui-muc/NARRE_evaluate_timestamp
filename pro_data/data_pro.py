@@ -261,6 +261,11 @@ if __name__ == '__main__':
 
     print(f"-"*60)
     print(f"{now()} Step2: split datsets into train/val/test, save into npy data")
+    # data_time=data.sort_values(by="reviewTime" , ascending=True)
+    # train_index=int(0.8*data_time.shape[0])
+    # data_train= data_time.iloc[0:train_index,:]
+    # data_test = data_time.iloc[train_index:,:]
+
     data_train, data_test = train_test_split(data, test_size=0.2, random_state=1234)
     uids_train, iids_train = get_count(data_train, 'user_id'), get_count(data_train, 'item_id')
     userNum = len(uids_train)

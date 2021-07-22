@@ -150,16 +150,16 @@ def train(**kwargs):
                 print("model save")
         if val_rmse < best_res:
             best_res = val_rmse
-            print(f"\t best_rmse:{best_res:.4f};")
+        print(f"\t best_rmse:{best_res:.4f};")
         print("*"*30)
 
-    trainfilename=str(opt.dataset)+'train_'+str(opt.loss_method)+'loss_'+str(opt.r_id_merge)+str(opt.ui_merge)\
-                  +"_addtime_"+str(opt.addtime)+"_addcnn_"+str(opt.addcnn)+"_"+logtime+'.npy'
-    valfilename=str(opt.dataset)+'val_'+str(opt.loss_method)+'loss_'+str(opt.r_id_merge)+str(opt.ui_merge) \
-                +"_addtime_"+str(opt.addtime)+"_addcnn_"+str(opt.addcnn)+"_"+logtime+'.npy'
+        trainfilename=str(opt.dataset)+'train_'+str(opt.loss_method)+'loss_'+str(opt.r_id_merge)+str(opt.ui_merge)\
+                      +"_addtime_"+str(opt.addtime)+"_addcnn_"+str(opt.addcnn)+"_"+'.npy'
+        valfilename=str(opt.dataset)+'val_'+str(opt.loss_method)+'loss_'+str(opt.r_id_merge)+str(opt.ui_merge) \
+                    +"_addtime_"+str(opt.addtime)+"_addcnn_"+str(opt.addcnn)+"_"'.npy'
 
-    np.save(f"{log_save_folder}/log/{trainfilename}", Train_rmse_log)
-    np.save(f"{log_save_folder}/log/{valfilename}", Val_rmse_log)
+        np.save(f"{log_save_folder}/log/{trainfilename}", Train_rmse_log)
+        np.save(f"{log_save_folder}/log/{valfilename}", Val_rmse_log)
     print("----"*20)
     print(f"{now()} {opt.dataset} {opt.print_opt} best_rmse:  {best_res}")
     print("----"*20)
