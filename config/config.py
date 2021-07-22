@@ -184,7 +184,7 @@ class Baby_data_Config(DefaultConfig):
 
     vocab_size = 50002
     word_dim = 300
-    timestamp_size=
+    timestamp_size=599+1
     r_max_len = 94
 
     u_max_r = 9
