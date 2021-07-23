@@ -136,7 +136,7 @@ class Toys_and_Games_data_Config(DefaultConfig):
 
     vocab_size = 50002
     word_dim = 300
-    timestamp_size=
+    timestamp_size=647+1
     r_max_len = 113
 
     u_max_r = 9
@@ -160,7 +160,7 @@ class Office_Products_data_Config(DefaultConfig):
 
     vocab_size = 47808
     word_dim = 300
-    timestamp_size=
+    timestamp_size=504+1
     r_max_len = 134
 
     u_max_r = 14
@@ -196,6 +196,29 @@ class Baby_data_Config(DefaultConfig):
 
     user_num = 19445 + 2
     item_num = 7050 + 2
+
+    batch_size = 128
+    print_step = 100
+class Health_and_Personal_Care_data_Config(DefaultConfig):
+    dataset = 'Health_and_Personal_Care_data'
+
+    def __init__(self):
+        self.set_path('Health_and_Personal_Care_data')
+
+    vocab_size = 50002
+    word_dim = 300
+    timestamp_size=552+1
+    r_max_len = 103
+
+    u_max_r = 10
+    i_max_r = 23
+
+    train_data_size = 277109
+    test_data_size = 34623
+    val_data_size = 34623
+
+    user_num = 38609 + 2
+    item_num = 18534 + 2
 
     batch_size = 128
     print_step = 100
