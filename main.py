@@ -191,7 +191,7 @@ def train(**kwargs):
         np.save(f"{log_save_folder}/log/{valfilename}", Val_rmse_log)
     print("----"*20)
     print(f"{now()} {opt.dataset} {opt.print_opt} best_rmse:  {best_res}")
-    message='_addtime_'+str(opt.addtime)+'_addtcnn_'+str(opt.addcnn)+'_bestres_'+str(best_res)
+    message='_addtime_'+str(opt.addtime)+'_addtcnn_'+str(opt.addcnn)+'_rsdrop_'+str(opt.rs_drop)+'_bestres_'+str(best_res)
     logger.info('evaluate_time_'+opt.dataset+message)
     print("----"*20)
 
