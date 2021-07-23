@@ -56,6 +56,7 @@ class Net(nn.Module):
                 self.blannce_cn=nn.Conv2d(2,1,(1,1))#non-timestamp
 
         self.cnn = nn.Conv2d(1, opt.filters_num, (opt.kernel_size, opt.word_dim))
+        self.rs_drop=nn.Dropout(self.opt.drop_out)
 
         self.dropout = nn.Dropout(self.opt.drop_out)
         self.reset_para()
@@ -87,7 +88,8 @@ class Net(nn.Module):
                 rs_mix=rs_mix.view(-1,channel,emb_dim)
                 rs_mix = F.relu(self.blannce_cn(rs_mix.unsqueeze(2)).squeeze(1).squeeze(1))
                 rs_mix=rs_mix.view(-1,r_num,rs_mix.size(1))
-                # rs_mix=self.dropout(rs_mix)
+                if self.opt.rs_drop:
+                    rs_mix=self.rs_drop(rs_mix)
 
             else:
                 rs_mix=torch.cat([self.review_linear(fea).unsqueeze(2),self.id_linear(u_i_id_emb).unsqueeze(2)],dim=2)

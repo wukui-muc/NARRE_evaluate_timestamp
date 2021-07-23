@@ -50,6 +50,7 @@ class DefaultConfig:
 
     addtime = False
     addcnn  = False
+    rs_drop = False
     #
     def set_path(self, name):
         '''
