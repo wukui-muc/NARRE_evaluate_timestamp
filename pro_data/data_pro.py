@@ -12,7 +12,7 @@ import gensim
 from collections import defaultdict
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-P_REVIEW = 0.85
+P_REVIEW = 0.9
 MAX_DF = 0.7
 MAX_VOCAB = 50000
 DOC_LEN = 500

@@ -162,10 +162,16 @@ class Office_Products_data_Config(DefaultConfig):
     vocab_size = 47808
     word_dim = 300
     timestamp_size=504+1
-    r_max_len = 134
+    # r_max_len = 134
 
-    u_max_r = 14
-    i_max_r = 35
+    r_max_len = 167
+
+    # u_max_r = 14
+    # i_max_r = 35
+
+
+    u_max_r = 17
+    i_max_r = 46
 
     train_data_size = 42611
     test_data_size = 5323
@@ -186,10 +192,13 @@ class Baby_data_Config(DefaultConfig):
     vocab_size = 50002
     word_dim = 300
     timestamp_size=599+1
-    r_max_len = 94
+    # r_max_len = 94 #原始
+    r_max_len = 118
 
-    u_max_r = 9
-    i_max_r = 29
+    # u_max_r = 9
+    # i_max_r = 29
+    u_max_r = 11
+    i_max_r = 39
 
     train_data_size = 128644
     test_data_size = 16074
@@ -198,7 +207,7 @@ class Baby_data_Config(DefaultConfig):
     user_num = 19445 + 2
     item_num = 7050 + 2
 
-    batch_size = 128
+    batch_size = 64
     print_step = 100
 class Health_and_Personal_Care_data_Config(DefaultConfig):
     dataset = 'Health_and_Personal_Care_data'

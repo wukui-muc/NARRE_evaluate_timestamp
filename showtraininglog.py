@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
 if __name__ == "__main__":
 
-    path = 'dataset/addtimestamp/log'
-    train_loss = np.load(path + '/Office_Products_datatrain_rmseloss_sumdot.npy')
-    val_loss=np.load(path + '/Office_Products_dataval_rmseloss_sumdot.npy')
+    path = 'dataset/log'
+    train_loss = np.load(path + '/Baby_datatrain_rmseloss_sumdot_addtime_False_addcnn_False_.npy')
+    val_loss=np.load(path + '/Baby_dataval_rmseloss_sumdot_addtime_False_addcnn_False_.npy')
     x_train = np.linspace(0, np.shape(train_loss)[0], np.shape(train_loss)[0])
     x_val=np.linspace(0, np.shape(val_loss)[0], np.shape(val_loss)[0])
     plt.figure()
