@@ -113,15 +113,22 @@ class Digital_Music_data_Config(DefaultConfig):
 
     vocab_size = 50002
     word_dim = 300
-    timestamp_size=778+1
-    r_max_len = 202
+    timestamp_size=196+1
+    # r_max_len = 202
+
+    # u_max_r = 13
+    # i_max_r = 24
+
+    # train_data_size = 51764
+    # test_data_size = 6471
+    # val_data_size = 6471
 
     u_max_r = 13
-    i_max_r = 24
+    i_max_r = 23
 
-    train_data_size = 51764
-    test_data_size = 6471
-    val_data_size = 6471
+    train_data_size = 48268
+    test_data_size = 8990
+    val_data_size = 8990
 
     user_num = 5541 + 2
     item_num = 3568 + 2
@@ -159,23 +166,26 @@ class Office_Products_data_Config(DefaultConfig):
     def __init__(self):
         self.set_path('Office_Products_data')
 
-    vocab_size = 47808
+    # vocab_size = 47808
+    vocab_size=46284
     word_dim = 300
-    timestamp_size=504+1
+    timestamp_size=147+1
     # r_max_len = 134
-
-    r_max_len = 167
+    r_max_len = 153
 
     # u_max_r = 14
     # i_max_r = 35
 
+    # train_data_size = 42611
+    # test_data_size = 5323
+    # val_data_size = 5324
 
-    u_max_r = 17
-    i_max_r = 46
+    u_max_r = 13
+    i_max_r = 25
 
-    train_data_size = 42611
-    test_data_size = 5323
-    val_data_size = 5324
+    train_data_size = 36540
+    test_data_size = 8512
+    val_data_size = 8512
 
     user_num = 4905 + 2
     item_num = 2420 + 2
@@ -191,18 +201,23 @@ class Baby_data_Config(DefaultConfig):
 
     vocab_size = 50002
     word_dim = 300
-    timestamp_size=599+1
+    timestamp_size=158+1
     # r_max_len = 94 #原始
-    r_max_len = 118
+    r_max_len = 113
 
     # u_max_r = 9
     # i_max_r = 29
-    u_max_r = 11
-    i_max_r = 39
 
-    train_data_size = 128644
-    test_data_size = 16074
-    val_data_size = 16074
+    # train_data_size = 128644
+    # test_data_size = 16074
+    # val_data_size = 16074
+
+    u_max_r = 8
+    i_max_r = 23
+
+    train_data_size = 106494
+    test_data_size = 27617
+    val_data_size = 27617
 
     user_num = 19445 + 2
     item_num = 7050 + 2

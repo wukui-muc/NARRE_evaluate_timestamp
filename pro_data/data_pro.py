@@ -11,8 +11,9 @@ from operator import itemgetter
 import gensim
 from collections import defaultdict
 from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.corpus import stopwords
 
-P_REVIEW = 0.9
+P_REVIEW = 0.85
 MAX_DF = 0.7
 MAX_VOCAB = 50000
 DOC_LEN = 500
@@ -38,18 +39,22 @@ def numerize(data):
         text=line.split(',')
         year=text[1]
         month,day=text[0].split(' ')
-        if int(day)<8:
-            day='01'
-        elif 7<int(day)<15:
-            day='02'
-        elif 14<int(day)<22:
-            day='03'
-        elif 21<int(day)<=31:
-            day='04'
-
-        if len(month)<2:
-            month='0'+month
-        time.append(year+month+day)
+        if enable_weektime=='week':
+            if int(day)<8:
+                day='01'
+            elif 7<int(day)<15:
+                day='02'
+            elif 14<int(day)<22:
+                day='03'
+            elif 21<int(day)<=31:
+                day='04'
+            if len(month)<2:
+                month='0'+month
+            time.append(year+month+day)
+        elif enable_weektime=='month':
+            if len(month)<2:
+                month='0'+month
+            time.append(year+month)
     time=list(map(int,time))
     timeID= list(set(time))
     timeID.sort()
@@ -180,6 +185,12 @@ if __name__ == '__main__':
     start_time = time.time()
     assert(len(sys.argv) >= 2)
     filename = sys.argv[1]
+    enable_weektime=sys.argv[2]
+    remove_stopwords=sys.argv[3]
+    recent_data=sys.argv[4]
+    print("start process data ************************")
+    print("Overall configure:")
+    print(enable_weektime+'_timestamp'+','+'remove_stop_'+remove_stopwords+','+'recent_data_'+recent_data)
     yelp_data = False
     if len(sys.argv) > 2 and sys.argv[2] == 'yelp':
         # yelp dataset
@@ -262,14 +273,15 @@ if __name__ == '__main__':
     print(f"-"*60)
     print(f"{now()} Step2: split datsets into train/val/test, save into npy data")
 
-    # data_time=data.sort_values(by="reviewTime" , ascending=True)
-    # train_index=int(0.5*data_time.shape[0])
-    # data_train= data_time.iloc[0:train_index,:]
-    # data_test = data_time.iloc[train_index:,:]
-    # train_index=[]
 
-
-    data_train, data_test = train_test_split(data, test_size=0.2, random_state=1234)
+    if recent_data=='True':
+        data_time=data.sort_values(by="reviewTime" , ascending=True)
+        train_index=int(0.5*data_time.shape[0])
+        data_train= data_time.iloc[0:train_index,:]
+        data_test = data_time.iloc[train_index:,:]
+        train_index=[]
+    else:
+        data_train, data_test = train_test_split(data, test_size=0.2, random_state=1234)
     uids_train, iids_train = get_count(data_train, 'user_id'), get_count(data_train, 'item_id')
     userNum = len(uids_train)
     itemNum = len(iids_train)
@@ -293,12 +305,16 @@ if __name__ == '__main__':
     ##下面这一部分的改动主要直接删除了test中对应train里未出现的ID
     for uid in uidMiss:
         index = data_test.index[data_test['user_id'] == uid].tolist()
+        if recent_data=='True':
+            index=index[0:int(0.5*len(index))]#取前50%时间戳的数据放到训练集中
         uid_index.extend(index)
     data_train = pd.concat([data_train, data_test.loc[uid_index]])#将不在train中的user数据从test中粘贴到train里
 
     iid_index = []
     for iid in iidMiss:
         index = data_test.index[data_test['item_id'] == iid].tolist()
+        if recent_data=='True':
+            index=index[0:int(0.5*len(index))]#取前50%时间戳的数据放到训练集中
         iid_index.extend(index)
     data_train = pd.concat([data_train, data_test.loc[iid_index]])
 
@@ -357,10 +373,13 @@ if __name__ == '__main__':
 
     user_reviews_time_dict={}#创建评论对应的timestamp（对应user_reviews_dict中每一条评论的timestamp）
     item_reviews_time_dict={}
+    stop_words=stopwords.words('english')
 
     for i in data_train.values:
         str_review = clean_str(i[3].encode('ascii', 'ignore').decode('ascii'))
 
+        if remove_stopwords=='True':
+            str_review = ' '.join([w for w in str_review.split() if not w in stop_words])
         if len(str_review.strip()) == 0:
             str_review = "<unk>"
 
