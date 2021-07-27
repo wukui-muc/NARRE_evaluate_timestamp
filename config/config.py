@@ -148,6 +148,7 @@ class Digital_Music_data_Config(DefaultConfig):
     word_dim = 300
     vocab_size = 0
     timestamp_size=0
+    r_max_len=0
     u_max_r = 0
     i_max_r = 0
 
@@ -170,6 +171,8 @@ class Toys_and_Games_data_Config(DefaultConfig):
     word_dim = 300
     vocab_size = 0
     timestamp_size=0
+    r_max_len=0
+
     u_max_r = 0
     i_max_r = 0
 
@@ -191,6 +194,8 @@ class Office_Products_data_Config(DefaultConfig):
     word_dim = 300
     vocab_size = 0
     timestamp_size=0
+    r_max_len=0
+
     u_max_r = 0
     i_max_r = 0
 
@@ -211,6 +216,8 @@ class Baby_data_Config(DefaultConfig):
     word_dim = 300
     vocab_size = 0
     timestamp_size=0
+    r_max_len=0
+
     u_max_r = 0
     i_max_r = 0
 
@@ -231,6 +238,8 @@ class Health_and_Personal_Care_data_Config(DefaultConfig):
     word_dim = 300
     vocab_size = 0
     timestamp_size=0
+    r_max_len=0
+
     u_max_r = 0
     i_max_r = 0
 

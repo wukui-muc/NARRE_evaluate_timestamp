@@ -189,6 +189,7 @@ if __name__ == '__main__':
     remove_stopwords=sys.argv[3]
     recent_data=sys.argv[4]
     P_REVIEW=float(sys.argv[5])
+    MAX_DF=float(sys.argv[6])
 
     print("start process data ************************")
     print("Overall configure:")
