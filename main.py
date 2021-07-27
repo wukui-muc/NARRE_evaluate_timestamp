@@ -72,7 +72,7 @@ def train(**kwargs):
     if opt.use_gpu:
         torch.cuda.manual_seed_all(opt.seed)
 
-    if ~opt.multi_gpu and opt.use_gpu:
+    if bool(1-opt.multi_gpu) and opt.use_gpu:
         torch.cuda.set_device(opt.gpu_id)
 
     model = Model(opt, getattr(models, opt.model))
