@@ -13,7 +13,7 @@ from collections import defaultdict
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
 
-P_REVIEW = 0.85
+# P_REVIEW = 0.85
 MAX_DF = 0.7
 MAX_VOCAB = 50000
 DOC_LEN = 500
@@ -188,6 +188,8 @@ if __name__ == '__main__':
     enable_weektime=sys.argv[2]
     remove_stopwords=sys.argv[3]
     recent_data=sys.argv[4]
+    P_REVIEW=float(sys.argv[5])
+
     print("start process data ************************")
     print("Overall configure:")
     print(enable_weektime+'_timestamp'+','+'remove_stop_'+remove_stopwords+','+'recent_data_'+recent_data)
@@ -554,6 +556,17 @@ if __name__ == '__main__':
     np.save(f"{save_folder}/train/item_user2id.npy", item_uid_list)
     np.save(f"{save_folder}/train/itemDoc2Index.npy", itemDoc2Index)
     np.save(f"{save_folder}/train/itemreview_timelist.npy",itemreview_timelist)
+
+    np.save(f"{save_folder}/vocab_size.npy",len(word_index))
+    np.save(f"{save_folder}/timestamp_size.npy",time_size)
+    np.save(f"{save_folder}/r_max_len.npy",maxSentLen)
+    np.save(f"{save_folder}/u_max_r.npy",u_pReviewLen)
+    np.save(f"{save_folder}/i_max_r.npy",i_pReviewLen)
+    np.save(f"{save_folder}/train_data_size.npy",len(x_train))
+    np.save(f"{save_folder}/test_data_size.npy",len(x_test))
+    np.save(f"{save_folder}/val_data_size.npy",len(x_val))
+    np.save(f"{save_folder}/user_num.npy",userNum)
+    np.save(f"{save_folder}/item_num.npy",itemNum)
 
     print(f"{now()} write finised")
 

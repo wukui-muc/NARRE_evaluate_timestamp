@@ -72,6 +72,17 @@ class DefaultConfig:
         self.userreview_timelist_path=f'{prefix}/userreview_timelist.npy'
         self.itemreview_timelist_path=f'{prefix}/itemreview_timelist.npy'
 
+        self.vocab_size_path= f'{self.data_root}/vocab_size.npy'
+        self.timestamp_size_path= f'{self.data_root}/timestamp_size.npy'
+        self.r_max_len_path= f'{self.data_root}/r_max_len.npy'
+        self.u_max_r_path= f'{self.data_root}/u_max_r.npy'
+        self.i_max_r_path= f'{self.data_root}/i_max_r.npy'
+        self.train_data_size_path= f'{self.data_root}/train_data_size.npy'
+        self.test_data_size_path= f'{self.data_root}/test_data_size.npy'
+        self.val_data_size_path= f'{self.data_root}/val_data_size.npy'
+        self.user_num_path= f'{self.data_root}/user_num.npy'
+        self.item_num_path= f'{self.data_root}/item_num.npy'
+
         self.w2v_path = f'{prefix}/w2v.npy'
 
     def parse(self, kwargs):
@@ -89,6 +100,18 @@ class DefaultConfig:
         #wukui
         self.userreview_timelist = np.load(self.userreview_timelist_path, encoding='bytes')
         self.itemreview_timelist = np.load(self.itemreview_timelist_path, encoding='bytes')
+
+        self.vocab_size = int(np.load(self.vocab_size_path, encoding='bytes'))
+        self.timestamp_size = int(np.load(self.timestamp_size_path, encoding='bytes'))+1
+        self.r_max_len = int(np.load(self.r_max_len_path, encoding='bytes'))
+        self.u_max_r = int(np.load(self.u_max_r_path, encoding='bytes'))
+
+        self.i_max_r = int(np.load(self.i_max_r_path, encoding='bytes'))
+        self.train_data_size = int(np.load(self.train_data_size_path, encoding='bytes'))
+        self.test_data_size = int(np.load(self.test_data_size_path, encoding='bytes'))
+        self.val_data_size = int(np.load(self.val_data_size_path, encoding='bytes'))
+        self.user_num = int(np.load(self.user_num_path, encoding='bytes'))+2
+        self.item_num = int(np.load(self.item_num_path, encoding='bytes'))+2
         #
 
         for k, v in kwargs.items():
@@ -110,28 +133,30 @@ class Digital_Music_data_Config(DefaultConfig):
 
     def __init__(self):
         self.set_path('Digital_Music_data')
-
-    vocab_size = 50002
-    word_dim = 300
-    timestamp_size=196+1
-    # r_max_len = 202
-
+    #原始格式
+    # vocab_size = 50002
+    # timestamp_size=196+1
     # u_max_r = 13
-    # i_max_r = 24
+    # i_max_r = 23
 
-    # train_data_size = 51764
-    # test_data_size = 6471
-    # val_data_size = 6471
+    # train_data_size = 48268
+    # test_data_size = 8990
+    # val_data_size = 8990
+    #
+    # user_num = 5541 + 2
+    # item_num = 3568 + 2
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    u_max_r = 0
+    i_max_r = 0
 
-    u_max_r = 13
-    i_max_r = 23
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
 
-    train_data_size = 48268
-    test_data_size = 8990
-    val_data_size = 8990
-
-    user_num = 5541 + 2
-    item_num = 3568 + 2
+    user_num = 0
+    item_num = 0
 
     batch_size = 128
     print_step = 100
@@ -142,21 +167,18 @@ class Toys_and_Games_data_Config(DefaultConfig):
     def __init__(self):
         self.set_path('Toys_and_Games_data')
 
-    vocab_size = 50002
     word_dim = 300
-    timestamp_size=647+1
-    r_max_len = 113
+    vocab_size = 0
+    timestamp_size=0
+    u_max_r = 0
+    i_max_r = 0
 
-    u_max_r = 9
-    i_max_r = 18
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
 
-    train_data_size = 134087
-    test_data_size = 16755
-    val_data_size = 16755
-
-    user_num = 19412 + 2
-    item_num = 11924 + 2
-
+    user_num = 0
+    item_num = 0
     batch_size = 128
     print_step = 100
 
@@ -166,30 +188,18 @@ class Office_Products_data_Config(DefaultConfig):
     def __init__(self):
         self.set_path('Office_Products_data')
 
-    # vocab_size = 47808
-    vocab_size=46284
     word_dim = 300
-    timestamp_size=147+1
-    # r_max_len = 134
-    r_max_len = 153
+    vocab_size = 0
+    timestamp_size=0
+    u_max_r = 0
+    i_max_r = 0
 
-    # u_max_r = 14
-    # i_max_r = 35
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
 
-    # train_data_size = 42611
-    # test_data_size = 5323
-    # val_data_size = 5324
-
-    u_max_r = 13
-    i_max_r = 25
-
-    train_data_size = 36540
-    test_data_size = 8512
-    val_data_size = 8512
-
-    user_num = 4905 + 2
-    item_num = 2420 + 2
-
+    user_num = 0
+    item_num = 0
     batch_size = 128
     print_step = 100
 
@@ -198,29 +208,18 @@ class Baby_data_Config(DefaultConfig):
 
     def __init__(self):
         self.set_path('Baby_data')
-
-    vocab_size = 50002
     word_dim = 300
-    timestamp_size=158+1
-    # r_max_len = 94 #原始
-    r_max_len = 113
+    vocab_size = 0
+    timestamp_size=0
+    u_max_r = 0
+    i_max_r = 0
 
-    # u_max_r = 9
-    # i_max_r = 29
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
 
-    # train_data_size = 128644
-    # test_data_size = 16074
-    # val_data_size = 16074
-
-    u_max_r = 8
-    i_max_r = 23
-
-    train_data_size = 106494
-    test_data_size = 27617
-    val_data_size = 27617
-
-    user_num = 19445 + 2
-    item_num = 7050 + 2
+    user_num = 0
+    item_num = 0
 
     batch_size = 64
     print_step = 100
@@ -229,21 +228,17 @@ class Health_and_Personal_Care_data_Config(DefaultConfig):
 
     def __init__(self):
         self.set_path('Health_and_Personal_Care_data')
-
-    vocab_size = 50002
     word_dim = 300
-    timestamp_size=552+1
-    r_max_len = 103
+    vocab_size = 0
+    timestamp_size=0
+    u_max_r = 0
+    i_max_r = 0
 
-    u_max_r = 10
-    i_max_r = 23
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
 
-    train_data_size = 277109
-    test_data_size = 34623
-    val_data_size = 34623
-
-    user_num = 38609 + 2
-    item_num = 18534 + 2
-
+    user_num = 0
+    item_num = 0
     batch_size = 128
     print_step = 100
