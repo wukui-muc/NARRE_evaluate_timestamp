@@ -116,7 +116,7 @@ def train(**kwargs):
         total_maeloss = 0.0
         model.train()
         print(f"{now()}  Epoch {epoch}...")
-        logger.info("epoch{:g}".format(epoch))
+        # logger.info("epoch{:g}".format(epoch))
         for idx, (train_datas, scores) in enumerate(train_data_loader):
             if opt.use_gpu:
                 scores = torch.FloatTensor(scores).cuda()
