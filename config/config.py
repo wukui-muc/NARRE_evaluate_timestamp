@@ -251,3 +251,24 @@ class Health_and_Personal_Care_data_Config(DefaultConfig):
     item_num = 0
     batch_size = 128
     print_step = 100
+class Movies_and_TV_data_Config(DefaultConfig):
+    dataset = 'Movies_and_TV_data'
+
+    def __init__(self):
+        self.set_path('Movies_and_TV_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
