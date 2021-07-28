@@ -10,7 +10,7 @@ class DefaultConfig:
     # -------------base config-----------------------#
     use_gpu = True
     gpu_id = 0
-    multi_gpu = True
+    multi_gpu = False
     gpu_ids = [0,1]
 
     seed = 2019

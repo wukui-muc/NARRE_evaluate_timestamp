@@ -14,8 +14,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
 
 # P_REVIEW = 0.85
-MAX_DF = 0.7
-MAX_VOCAB = 50000
+# MAX_DF = 0.7
+# MAX_VOCAB = 50000
 DOC_LEN = 500
 PRE_W2V_BIN_PATH = "../word2vec-GoogleNews-vectors-master/GoogleNews-vectors-negative300.bin.gz"  # the pre-trained word2vec files
 
@@ -190,7 +190,7 @@ if __name__ == '__main__':
     recent_data=sys.argv[4]
     P_REVIEW=float(sys.argv[5])
     MAX_DF=float(sys.argv[6])
-
+    MAX_VOCAB= int(sys.argv[7])
     print("start process data ************************")
     print("Overall configure:")
     print(enable_weektime+'_timestamp'+','+'remove_stop_'+remove_stopwords+','+'recent_data_'+recent_data)
