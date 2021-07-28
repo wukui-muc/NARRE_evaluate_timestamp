@@ -43,7 +43,7 @@ class DefaultConfig:
     output = 'lfm'  # 'fm', 'lfm', 'other: sum the ui_feature'
 
     fine_step = False  # save mode in step level, defualt in epoch
-    pth_path = "checkpoints/*.pth"  # the saved pth path for test
+    pth_path = "checkpoints/NARRE_Digital_Music_data_addtime_True_addcnn_True_default.pth"  # the saved pth path for test
 
     continue_train=False
     print_opt = 'default'
