@@ -43,7 +43,7 @@ class DefaultConfig:
     output = 'lfm'  # 'fm', 'lfm', 'other: sum the ui_feature'
 
     fine_step = False  # save mode in step level, defualt in epoch
-    pth_path = "checkpoints/NARRE_Digital_Music_data_addtime_True_addcnn_True_default.pth"  # the saved pth path for test
+    pth_path = "checkpoints/NARRE_Digital_Music_data_addtime_True_addcnn_True_0.90.pth"  # the saved pth path for test
 
     continue_train=False
     print_opt = 'default'
@@ -270,5 +270,26 @@ class Movies_and_TV_data_Config(DefaultConfig):
 
     user_num = 0
     item_num = 0
-    batch_size = 128
+    batch_size = 64
+    print_step = 100
+class Movies_and_TV_data_Config(DefaultConfig):
+    dataset = 'Movies_and_TV_data'
+
+    def __init__(self):
+        self.set_path('Movies_and_TV_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 16
     print_step = 100

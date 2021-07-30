@@ -4,7 +4,8 @@ import torch
 import torch.nn as nn
 import numpy as np
 import torch.nn.functional as F
-
+import os
+import pickle
 
 class NARRE(nn.Module):
     '''
@@ -63,7 +64,22 @@ class Net(nn.Module):
 
     def forward(self, reviews, ids, ids_list,time_list):
         # --------------- word embedding ----------------------------------
+        # file = open(os.path.join(self.opt.data_root, 'wordindex'), 'rb')
+        # file=pickle.load(file)
+        # word=list(file.keys())
+        # # word_index=list(file.values())
+        # reviews_idx=reviews.tolist()
+        # review_text= np.array([word[z] for x in reviews_idx for y in x for z in y ])
+        # review_text=review_text.reshape(128,13,202)
+        # file = open(os.path.join(self.opt.data_root, 'userindex'), 'rb')
+        # file = pickle.load(file)
+        # userID=list(file.keys())
+        # file = open(os.path.join(self.opt.data_root, 'itemindex'), 'rb')
+        # file = pickle.load(file)
+        # itemID = list(file.keys())
+
         reviews = self.word_embs(reviews)  # size * 300
+
         bs, r_num, r_len, wd = reviews.size()
         reviews = reviews.view(-1, r_len, wd)
 

@@ -12,7 +12,7 @@ import gensim
 from collections import defaultdict
 from sklearn.feature_extraction.text import TfidfVectorizer
 from nltk.corpus import stopwords
-
+import pickle
 # P_REVIEW = 0.85
 # MAX_DF = 0.7
 # MAX_VOCAB = 50000
@@ -266,6 +266,10 @@ if __name__ == '__main__':
 
     user2id = dict((uid, i) for(i, uid) in enumerate(uidList))
     item2id = dict((iid, i) for(i, iid) in enumerate(iidList))
+    output = open(os.path.join(save_folder, 'userindex'), 'wb')
+    pickle.dump(user2id, output)
+    output = open(os.path.join(save_folder, 'itemindex'), 'wb')
+    pickle.dump(item2id, output)
 
     data = numerize(data)
 
@@ -320,9 +324,6 @@ if __name__ == '__main__':
             index=index[0:int(0.5*len(index))]#取前50%时间戳的数据放到训练集中
         iid_index.extend(index)
     data_train = pd.concat([data_train, data_test.loc[iid_index]])
-
-
-
     all_index = list(set().union(uid_index, iid_index))
     data_test = data_test.drop(all_index)
 
@@ -413,6 +414,13 @@ if __name__ == '__main__':
     word_index['<unk>'] = 0
     for i, w in enumerate(vocab.keys(), 1):
         word_index[w] = i
+
+    output=open(os.path.join(save_folder,'wordindex'),'wb')
+    pickle.dump(word_index,output)
+    # tmp1=open(os.path.join(save_folder,'wordindex'),'rb')
+    # tmp=pickle.load(tmp1)
+
+
     print(f"The vocab size: {len(word_index)}")
     print(f"Average user document length: {sum([len(i) for i in user_review2doc])/len(user_review2doc)}")
     print(f"Average item document length: {sum([len(i) for i in item_review2doc])/len(item_review2doc)}")
