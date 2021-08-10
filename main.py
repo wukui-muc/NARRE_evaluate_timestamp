@@ -143,20 +143,20 @@ def train(**kwargs):
             loss.backward()
             optimizer.step()
             if opt.fine_step:
-                if idx % opt.print_step == 0 and idx > 0:
+                if idx % 500 == 0 and idx > 0:
                     print("\t{}, {} step finised;".format(now(), idx))
                     val_loss, val_mse, val_mae = predict(model, val_data_loader, opt)
-                    fine_val_rmse=np.sqrt(val_mse)
-                    if val_loss < min_loss:
+                    val_rmse=np.sqrt(val_mse)
+                    if val_rmse < min_loss:
                         if opt.multi_gpu:
                             model.module.save(name=opt.dataset, opt=opt.print_opt)
-                            min_loss = val_loss
+                            min_loss = val_rmse
                             print("\tmodel save")
                         else:
                             model.save(name=opt.dataset, opt=opt.print_opt)
-                            min_loss = val_loss
+                            min_loss = val_rmse
                             print("\tmodel save")
-                    if val_loss > min_loss:
+                    if val_rmse > min_loss:
                         best_res = min_loss
 
         scheduler.step()

@@ -111,6 +111,7 @@ def build_doc(u_reviews_dict, i_reviews_dict):
         i_reviews.append('<SEP>'.join(i_reviews_dict[ind]))
 
     vectorizer = TfidfVectorizer(max_df=MAX_DF, max_features=MAX_VOCAB)
+    # vectorizer = TfidfVectorizer()
     vectorizer.fit(u_reviews)
     vocab = vectorizer.vocabulary_
     vocab[MAX_VOCAB] = '<SEP>'

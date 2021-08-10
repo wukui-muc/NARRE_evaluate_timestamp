@@ -6,7 +6,7 @@ import numpy as np
 import torch.nn.functional as F
 import os
 import pickle
-
+import pandas as pd
 class NARRE(nn.Module):
     '''
     NARRE: WWW 2018
@@ -22,8 +22,11 @@ class NARRE(nn.Module):
     def forward(self, datas):
         user_reviews, item_reviews, uids, iids, user_item2id, item_user2id, user_doc, item_doc,userreview_time,itemreview_time = datas
         u_fea = self.user_net(user_reviews, uids, user_item2id,userreview_time)
-        i_fea = self.item_net(item_reviews, iids, item_user2id,itemreview_time)
+        # if not self.training:
+            # i_fea,data_att = self.item_net(item_reviews, iids, item_user2id,itemreview_time)
+            # return u_fea, i_fea,data_att
 
+        i_fea = self.item_net(item_reviews, iids, item_user2id,itemreview_time)
         return u_fea, i_fea
 
 
@@ -64,19 +67,24 @@ class Net(nn.Module):
 
     def forward(self, reviews, ids, ids_list,time_list):
         # --------------- word embedding ----------------------------------
-        # file = open(os.path.join(self.opt.data_root, 'wordindex'), 'rb')
-        # file=pickle.load(file)
-        # word=list(file.keys())
-        # # word_index=list(file.values())
-        # reviews_idx=reviews.tolist()
-        # review_text= np.array([word[z] for x in reviews_idx for y in x for z in y ])
-        # review_text=review_text.reshape(128,13,202)
-        # file = open(os.path.join(self.opt.data_root, 'userindex'), 'rb')
-        # file = pickle.load(file)
-        # userID=list(file.keys())
-        # file = open(os.path.join(self.opt.data_root, 'itemindex'), 'rb')
-        # file = pickle.load(file)
-        # itemID = list(file.keys())
+
+        # if not self.training:
+        #     bs, r_num, r_len = reviews.size()
+        #     if r_num==self.opt.i_max_r: #判断是否为item 网络
+        #         file = open(os.path.join(self.opt.data_root, 'wordindex'), 'rb')
+        #         file=pickle.load(file)
+        #         word=list(file.keys())
+        #         word_index=list(file.values())
+        #         reviews_idx=reviews.tolist()
+        #         review_text= np.array([word[z] for x in reviews_idx for y in x for z in y ])
+        #
+        #         review_text=review_text.reshape(bs,r_num,r_len)
+        #         file = open(os.path.join(self.opt.data_root, 'userindex'), 'rb')
+        #         file = pickle.load(file)
+        #         userID=list(file.keys())
+        #         file = open(os.path.join(self.opt.data_root, 'itemindex'), 'rb')
+        #         file = pickle.load(file)
+        #         itemID = list(file.keys())
 
         reviews = self.word_embs(reviews)  # size * 300
 
@@ -121,6 +129,21 @@ class Net(nn.Module):
         r_fea = fea * att_weight
         r_fea = r_fea.sum(1)
         r_fea = self.dropout(r_fea)
+
+        # if self.training and r_num==self.opt.i_max_r:
+        #     att=np.array(att_score.cpu())
+        #     max_att=[np.where(x==max(x))[0] for x in att]
+        #     min_att=[]
+        #     for x in att:
+        #         for i in range(0,len(x)):
+        #             if x[i]<0:
+        #                 x[i]=1000
+        #         min_att.append(np.where(x==min(x))[0])
+        #     itemid =[itemID[x] for x in ids.cpu()]
+        #     max_att_review=[review_text[i][max_att[i]] for i in range(0,128)]
+        #     min_att_review=[review_text[i][min_att[i]] for i in range(0,128)]
+        #     data_frame = {'item_id': pd.Series(itemid),'maxatt_id':pd.Series(max_att),'minatt_id':pd.Series(min_att),'max_att_review':pd.Series(max_att_review),'min_att_review':pd.Series(min_att_review)}
+        #     return torch.stack([id_emb, self.fc_layer(r_fea)], 1),data_frame
 
         return torch.stack([id_emb, self.fc_layer(r_fea)], 1)
 

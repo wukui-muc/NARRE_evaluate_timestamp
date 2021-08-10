@@ -35,7 +35,10 @@ class Model(nn.Module):
     def forward(self, datas):
 
         user_reviews,item_reviews, uids, iids, user_item2id, item_user2id, user_doc, item_doc,userreview_time,itemreview_time = datas
-        user_feature, item_feature = self.net(datas)
+        # if not self.training:
+        #     user_feature, item_feature,data_att= self.net(datas)
+
+        user_feature, item_feature= self.net(datas)
         ui_feature = self.fusion_net(user_feature, item_feature)
         ui_feature = self.dropout(ui_feature)
         output = self.predict_net(ui_feature, uids, iids).squeeze(1)

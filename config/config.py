@@ -43,7 +43,7 @@ class DefaultConfig:
     output = 'lfm'  # 'fm', 'lfm', 'other: sum the ui_feature'
 
     fine_step = False  # save mode in step level, defualt in epoch
-    pth_path = "checkpoints/NARRE_Digital_Music_data_addtime_True_addcnn_True_0.90.pth"  # the saved pth path for test
+    pth_path = "checkpoints/NARRE_Digital_Music_data_addtime_True_addcnn_True_0.91.pth"  # the saved pth path for test
 
     continue_train=False
     print_opt = 'default'
@@ -228,7 +228,7 @@ class Baby_data_Config(DefaultConfig):
     user_num = 0
     item_num = 0
 
-    batch_size = 64
+    batch_size = 128
     print_step = 100
 class Health_and_Personal_Care_data_Config(DefaultConfig):
     dataset = 'Health_and_Personal_Care_data'
@@ -251,27 +251,7 @@ class Health_and_Personal_Care_data_Config(DefaultConfig):
     item_num = 0
     batch_size = 128
     print_step = 100
-class Movies_and_TV_data_Config(DefaultConfig):
-    dataset = 'Movies_and_TV_data'
 
-    def __init__(self):
-        self.set_path('Movies_and_TV_data')
-    word_dim = 300
-    vocab_size = 0
-    timestamp_size=0
-    r_max_len=0
-
-    u_max_r = 0
-    i_max_r = 0
-
-    train_data_size = 0
-    test_data_size = 0
-    val_data_size = 0
-
-    user_num = 0
-    item_num = 0
-    batch_size = 64
-    print_step = 100
 class Movies_and_TV_data_Config(DefaultConfig):
     dataset = 'Movies_and_TV_data'
 
@@ -292,4 +272,180 @@ class Movies_and_TV_data_Config(DefaultConfig):
     user_num = 0
     item_num = 0
     batch_size = 16
+    print_step = 100
+
+class Amazon_Instant_Video_data_Config(DefaultConfig):
+    dataset = 'Amazon_Instant_Video_data'
+
+    def __init__(self):
+        self.set_path('Amazon_Instant_Video_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Beauty_data_Config(DefaultConfig):
+    dataset = 'Beauty_data'
+
+    def __init__(self):
+        self.set_path('Beauty_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Cell_Phones_and_Accessories_data_Config(DefaultConfig):
+    dataset = 'Cell_Phones_and_Accessories_data'
+
+    def __init__(self):
+        self.set_path('Cell_Phones_and_Accessories_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Pet_Supplies_data_Config(DefaultConfig):
+    dataset = 'Pet_Supplies_data'
+
+    def __init__(self):
+        self.set_path('Pet_Supplies_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Kindle_Store_data_Config(DefaultConfig):
+    dataset = 'Kindle_Store_data'
+
+    def __init__(self):
+        self.set_path('Kindle_Store_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Video_Games_data_Config(DefaultConfig):
+    dataset = 'Video_Games_data'
+
+    def __init__(self):
+        self.set_path('Video_Games_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Automotive_data_Config(DefaultConfig):
+    dataset = 'Automotive_data'
+
+    def __init__(self):
+        self.set_path('Automotive_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Tools_and_Home_data_Config(DefaultConfig):
+    dataset = 'Tools_and_Home_data'
+
+    def __init__(self):
+        self.set_path('Tools_and_Home_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
     print_step = 100
