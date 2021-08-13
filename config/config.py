@@ -449,3 +449,312 @@ class Tools_and_Home_data_Config(DefaultConfig):
     item_num = 0
     batch_size = 128
     print_step = 100
+
+class Sports_and_Outdoors_data_Config(DefaultConfig):
+    dataset = 'Sports_and_Outdoors_data'
+
+    def __init__(self):
+        self.set_path('Sports_and_Outdoors_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Software_data_config(DefaultConfig):
+    dataset = 'Software_data'
+
+    def __init__(self):
+        self.set_path('Software_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Patio_Lawn_and_Garden_data_Config(DefaultConfig):
+    dataset = 'Patio_Lawn_and_Garden_data'
+
+    def __init__(self):
+        self.set_path('Patio_Lawn_and_Garden_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Musical_Instruments_data_Config(DefaultConfig):
+    dataset = 'Musical_Instruments_data'
+
+    def __init__(self):
+        self.set_path('Musical_Instruments_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Industrial_and_Scientific_data_config(DefaultConfig):
+    dataset = 'Industrial_and_Scientific_data'
+
+    def __init__(self):
+        self.set_path('Industrial_and_Scientific_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Home_and_Kitchen_data_config(DefaultConfig):
+    dataset = 'Home_and_Kitchen_data'
+
+    def __init__(self):
+        self.set_path('Home_and_Kitchen_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Grocery_and_Gourmet_Food_data_config(DefaultConfig):
+    dataset = 'Grocery_and_Gourmet_Food_data'
+
+    def __init__(self):
+        self.set_path('Grocery_and_Gourmet_Food_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Electronics_data_config(DefaultConfig):
+    dataset = 'Electronics_data'
+
+    def __init__(self):
+        self.set_path('Electronics_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Clothing_Shoes_and_Jewelry_data_Config(DefaultConfig):
+    dataset = 'Clothing_Shoes_and_Jewelry_data'
+
+    def __init__(self):
+        self.set_path('Clothing_Shoes_and_Jewelry_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class CDs_and_Vinyl_data_config(DefaultConfig):
+    dataset = 'CDs_and_Vinyl_data'
+
+    def __init__(self):
+        self.set_path('CDs_and_Vinyl_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Buy_a_Kindle_data_config(DefaultConfig):
+    dataset = 'Buy_a_Kindle_data'
+
+    def __init__(self):
+        self.set_path('Buy_a_Kindle_data_config')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+
+class Baby_Products_data_config(DefaultConfig):
+    dataset = 'Baby_Products_data'
+
+    def __init__(self):
+        self.set_path('Baby_Products_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Arts_Crafts_and_Sewing_data_config(DefaultConfig):
+    dataset = 'Arts_Crafts_and_Sewing_data'
+
+    def __init__(self):
+        self.set_path('Arts_Crafts_and_Sewing_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Apps_for_Android_data_config(DefaultConfig):
+    dataset = 'Apps_for_Android_data'
+
+    def __init__(self):
+        self.set_path('Apps_for_Android_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
