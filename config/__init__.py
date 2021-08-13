@@ -16,16 +16,16 @@ from .config import Digital_Music_data_Config
 from .config import Baby_data_Config
 
 from .config import Sports_and_Outdoors_data_Config
-from .config import Software_data_config
+from .config import Software_data_Config
 from .config import Patio_Lawn_and_Garden_data_Config
 from .config import Musical_Instruments_data_Config
-from .config import Industrial_and_Scientific_data_config
-from .config import Home_and_Kitchen_data_config
-from .config import Grocery_and_Gourmet_Food_data_config
-from .config import Electronics_data_config
+from .config import Industrial_and_Scientific_data_Config
+from .config import Home_and_Kitchen_data_Config
+from .config import Grocery_and_Gourmet_Food_data_Config
+from .config import Electronics_data_Config
 from .config import Clothing_Shoes_and_Jewelry_data_Config
-from .config import CDs_and_Vinyl_data_config
-from .config import Buy_a_Kindle_data_config
-from .config import Baby_Products_data_config
-from .config import Arts_Crafts_and_Sewing_data_config
-from .config import Apps_for_Android_data_config
+from .config import CDs_and_Vinyl_data_Config
+from .config import Buy_a_Kindle_data_Config
+from .config import Baby_Products_data_Config
+from .config import Arts_Crafts_and_Sewing_data_Config
+from .config import Apps_for_Android_data_Config

@@ -472,7 +472,7 @@ class Sports_and_Outdoors_data_Config(DefaultConfig):
     batch_size = 128
     print_step = 100
 
-class Software_data_config(DefaultConfig):
+class Software_data_Config(DefaultConfig):
     dataset = 'Software_data'
 
     def __init__(self):
@@ -538,7 +538,7 @@ class Musical_Instruments_data_Config(DefaultConfig):
     batch_size = 128
     print_step = 100
 
-class Industrial_and_Scientific_data_config(DefaultConfig):
+class Industrial_and_Scientific_data_Config(DefaultConfig):
     dataset = 'Industrial_and_Scientific_data'
 
     def __init__(self):
@@ -560,7 +560,7 @@ class Industrial_and_Scientific_data_config(DefaultConfig):
     batch_size = 128
     print_step = 100
 
-class Home_and_Kitchen_data_config(DefaultConfig):
+class Home_and_Kitchen_data_Config(DefaultConfig):
     dataset = 'Home_and_Kitchen_data'
 
     def __init__(self):
@@ -582,7 +582,7 @@ class Home_and_Kitchen_data_config(DefaultConfig):
     batch_size = 128
     print_step = 100
 
-class Grocery_and_Gourmet_Food_data_config(DefaultConfig):
+class Grocery_and_Gourmet_Food_data_Config(DefaultConfig):
     dataset = 'Grocery_and_Gourmet_Food_data'
 
     def __init__(self):
@@ -604,7 +604,7 @@ class Grocery_and_Gourmet_Food_data_config(DefaultConfig):
     batch_size = 128
     print_step = 100
 
-class Electronics_data_config(DefaultConfig):
+class Electronics_data_Config(DefaultConfig):
     dataset = 'Electronics_data'
 
     def __init__(self):
@@ -648,7 +648,7 @@ class Clothing_Shoes_and_Jewelry_data_Config(DefaultConfig):
     batch_size = 128
     print_step = 100
 
-class CDs_and_Vinyl_data_config(DefaultConfig):
+class CDs_and_Vinyl_data_Config(DefaultConfig):
     dataset = 'CDs_and_Vinyl_data'
 
     def __init__(self):
@@ -670,7 +670,7 @@ class CDs_and_Vinyl_data_config(DefaultConfig):
     batch_size = 128
     print_step = 100
 
-class Buy_a_Kindle_data_config(DefaultConfig):
+class Buy_a_Kindle_data_Config(DefaultConfig):
     dataset = 'Buy_a_Kindle_data'
 
     def __init__(self):
@@ -693,7 +693,7 @@ class Buy_a_Kindle_data_config(DefaultConfig):
     print_step = 100
 
 
-class Baby_Products_data_config(DefaultConfig):
+class Baby_Products_data_Config(DefaultConfig):
     dataset = 'Baby_Products_data'
 
     def __init__(self):
@@ -715,7 +715,7 @@ class Baby_Products_data_config(DefaultConfig):
     batch_size = 128
     print_step = 100
 
-class Arts_Crafts_and_Sewing_data_config(DefaultConfig):
+class Arts_Crafts_and_Sewing_data_Config(DefaultConfig):
     dataset = 'Arts_Crafts_and_Sewing_data'
 
     def __init__(self):
@@ -737,7 +737,7 @@ class Arts_Crafts_and_Sewing_data_config(DefaultConfig):
     batch_size = 128
     print_step = 100
 
-class Apps_for_Android_data_config(DefaultConfig):
+class Apps_for_Android_data_Config(DefaultConfig):
     dataset = 'Apps_for_Android_data'
 
     def __init__(self):
