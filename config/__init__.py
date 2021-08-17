@@ -29,3 +29,9 @@ from .config import Buy_a_Kindle_data_Config
 from .config import Baby_Products_data_Config
 from .config import Arts_Crafts_and_Sewing_data_Config
 from .config import Apps_for_Android_data_Config
+
+
+from .config import Computers_data_Config
+from .config import Amazon_Fire_TV_data_Config
+from .config import Amazon_Fashion_data_Config
+from .config import Magazine_Subscriptions_data_Config

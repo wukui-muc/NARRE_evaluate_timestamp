@@ -109,8 +109,8 @@ def train(**kwargs):
     smooth_mae_func = nn.SmoothL1Loss()
     Train_rmse_log=[]
     Val_rmse_log=[]
-    message='_addtime_'+str(opt.addtime)+'_addcnn_'+str(opt.addcnn)+'_bestres_'+str(best_res)
-    logger.info('evaluate_time_'+opt.dataset+message)
+    # message='_addtime_'+str(opt.addtime)+'_addcnn_'+str(opt.addcnn)+'_bestres_'+str(best_res)
+    # logger.info('evaluate_time_'+opt.dataset+message)
     for epoch in range(opt.num_epochs):
         total_loss = 0.0
         total_maeloss = 0.0

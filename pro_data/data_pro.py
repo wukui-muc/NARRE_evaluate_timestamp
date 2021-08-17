@@ -314,18 +314,25 @@ if __name__ == '__main__':
     for uid in uidMiss:
         index = data_test.index[data_test['user_id'] == uid].tolist()
         if recent_data=='True':
-            index=index[0:int(0.5*len(index))]#取前50%时间戳的数据放到训练集中
+            if len(index)>1:
+                index=index[0:int(0.5*len(index))]#取前50%时间戳的数据放到训练集中
+            else:
+                index=index
         uid_index.extend(index)
-    data_train = pd.concat([data_train, data_test.loc[uid_index]])#将不在train中的user数据从test中粘贴到train里
+    # data_train = pd.concat([data_train, data_test.loc[uid_index]])#将不在train中的user数据从test中粘贴到train里
 
     iid_index = []
     for iid in iidMiss:
         index = data_test.index[data_test['item_id'] == iid].tolist()
         if recent_data=='True':
-            index=index[0:int(0.5*len(index))]#取前50%时间戳的数据放到训练集中
+            if len(index)>1:
+                index=index[0:int(0.5*len(index))]#取前50%时间戳的数据放到训练集中
+            else:
+                index=index
         iid_index.extend(index)
-    data_train = pd.concat([data_train, data_test.loc[iid_index]])
+    # data_train = pd.concat([data_train, data_test.loc[iid_index]])
     all_index = list(set().union(uid_index, iid_index))
+    data_train = pd.concat([data_train, data_test.loc[all_index]])
     data_test = data_test.drop(all_index)
 
     # split validate set aand test set
@@ -418,8 +425,7 @@ if __name__ == '__main__':
 
     output=open(os.path.join(save_folder,'wordindex'),'wb')
     pickle.dump(word_index,output)
-    # tmp1=open(os.path.join(save_folder,'wordindex'),'rb')
-    # tmp=pickle.load(tmp1)
+
 
 
     print(f"The vocab size: {len(word_index)}")

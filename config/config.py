@@ -674,7 +674,7 @@ class Buy_a_Kindle_data_Config(DefaultConfig):
     dataset = 'Buy_a_Kindle_data'
 
     def __init__(self):
-        self.set_path('Buy_a_Kindle_data_config')
+        self.set_path('Buy_a_Kindle_data')
     word_dim = 300
     vocab_size = 0
     timestamp_size=0
@@ -742,6 +742,94 @@ class Apps_for_Android_data_Config(DefaultConfig):
 
     def __init__(self):
         self.set_path('Apps_for_Android_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Computers_data_Config(DefaultConfig):
+    dataset = 'Computers_data'
+
+    def __init__(self):
+        self.set_path('Computers_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Amazon_Fire_TV_data_Config(DefaultConfig):
+    dataset = 'Amazon_Fire_TV_data'
+
+    def __init__(self):
+        self.set_path('Amazon_Fire_TV_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Amazon_Fashion_data_Config(DefaultConfig):
+    dataset = 'Amazon_Fashion_data'
+
+    def __init__(self):
+        self.set_path('Amazon_Fashion_data')
+    word_dim = 300
+    vocab_size = 0
+    timestamp_size=0
+    r_max_len=0
+
+    u_max_r = 0
+    i_max_r = 0
+
+    train_data_size = 0
+    test_data_size = 0
+    val_data_size = 0
+
+    user_num = 0
+    item_num = 0
+    batch_size = 128
+    print_step = 100
+
+class Magazine_Subscriptions_data_Config(DefaultConfig):
+    dataset = 'Magazine_Subscriptions_data'
+
+    def __init__(self):
+        self.set_path('Magazine_Subscriptions_data')
     word_dim = 300
     vocab_size = 0
     timestamp_size=0
