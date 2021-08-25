@@ -51,13 +51,13 @@ class Net(nn.Module):
         self.attention_linear = nn.Linear(self.opt.id_emb_size, 1)
         self.fc_layer = nn.Linear(self.opt.filters_num, self.opt.id_emb_size)
 
-        if self.opt.addcnn:
-            if self.opt.addtime:
-                self.time_linear=nn.Linear(self.opt.id_emb_size, self.opt.id_emb_size,bias=False)
-                self.u_i_time_embedding=nn.Embedding(self.opt.timestamp_size,self.opt.id_emb_size)
-                self.blannce_cn=nn.Conv2d(3,1,(1,1))#timestamp
-            else:
-                self.blannce_cn=nn.Conv2d(2,1,(1,1))#non-timestamp
+        # if self.opt.addcnn:
+        if self.opt.addtime:
+            self.time_linear=nn.Linear(self.opt.id_emb_size, self.opt.id_emb_size,bias=False)
+            self.u_i_time_embedding=nn.Embedding(self.opt.timestamp_size,self.opt.id_emb_size)
+            self.blannce_cn=nn.Conv2d(3,1,(1,1))#timestamp
+        else:
+            self.blannce_cn=nn.Conv2d(2,1,(1,1))#non-timestamp
 
         self.cnn = nn.Conv2d(1, opt.filters_num, (opt.kernel_size, opt.word_dim))
         self.rs_drop=nn.Dropout(self.opt.drop_out)
@@ -122,7 +122,11 @@ class Net(nn.Module):
                 rs_mix = F.relu(self.blannce_cn(rs_mix.unsqueeze(2)).squeeze(1).squeeze(1))
                 rs_mix=rs_mix.view(-1,r_num,rs_mix.size(1))
         else:
-            rs_mix = F.relu(self.review_linear(fea) + self.id_linear(u_i_id_emb))
+            if self.opt.addtime:
+                rs_mix = F.relu(self.review_linear(fea) + self.id_linear(u_i_id_emb) + self.time_linear(u_i_time_emb))
+
+            else:
+                rs_mix = F.relu(self.review_linear(fea) + self.id_linear(u_i_id_emb))
 
         att_score = self.attention_linear(rs_mix)
         att_weight = F.softmax(att_score, 1)
